@@ -212,7 +212,6 @@ GameObject:
   - component: {fileID: 198166914}
   - component: {fileID: 198166913}
   - component: {fileID: 198166911}
-  - component: {fileID: 198166912}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -262,20 +261,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &198166912
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198166910}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &198166913
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -310,6 +295,8 @@ GameObject:
   - component: {fileID: 476219981}
   - component: {fileID: 476219980}
   - component: {fileID: 476219979}
+  - component: {fileID: 476219982}
+  - component: {fileID: 476219983}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -345,7 +332,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -374,6 +361,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476219982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476219978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a6104d636282847bc365e210804a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &476219983
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476219978}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1176505007
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +690,7 @@ GameObject:
   - component: {fileID: 1403681673}
   - component: {fileID: 1403681674}
   - component: {fileID: 1403681675}
+  - component: {fileID: 1403681676}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -709,7 +725,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -739,6 +755,22 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 1a895d896168ca24b9e223cc3c7aba22, type: 2}
   - {fileID: 2100000, guid: 1461aac78fbcf2543a24b936768e3933, type: 2}
   - {fileID: 2100000, guid: fcceaba486305f346897d224120e7426, type: 2}
+--- !u!54 &1403681676
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403681672}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1844975865
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +894,6 @@ GameObject:
   - component: {fileID: 1852459332}
   - component: {fileID: 1852459335}
   - component: {fileID: 1852459334}
-  - component: {fileID: 1852459333}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -885,20 +916,6 @@ Transform:
   m_Father: {fileID: 1403681673}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!64 &1852459333
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852459331}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1852459334
 MeshRenderer:
   m_ObjectHideFlags: 0

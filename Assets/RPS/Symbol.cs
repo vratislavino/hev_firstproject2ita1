@@ -5,9 +5,12 @@ using UnityEngine;
 public class Symbol : MonoBehaviour
 {
     SymbolEnum currentSymbol;
+    public SymbolEnum CurrentSymbol => currentSymbol;
 
     [SerializeField]
     private bool isPlayer;
+
+    public bool IsPlayer => isPlayer;
 
     [SerializeField]
     private MeshRenderer quad;
@@ -38,6 +41,19 @@ public class Symbol : MonoBehaviour
     private void ChangeSymbol(SymbolEnum symbol) {
         currentSymbol = symbol;
         quad.material = materials[(int)symbol];
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (!IsPlayer) return;
+
+        var enemy = collision.collider.GetComponentInParent<Symbol>();
+        if(enemy != null) {
+            // kdo vyhrál?
+
+            currentSymbol.Beats(enemy.currentSymbol);
+            Debug.Log("Collision " + currentSymbol + " : " + enemy.currentSymbol);
+        }
+
     }
 }
 
