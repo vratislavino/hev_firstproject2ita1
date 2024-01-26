@@ -7,18 +7,29 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     Weapon CurrentWeapon;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    GameObject ReloadCrosshair;
+    [SerializeField]
+    UnityEngine.UI.Image reloadImage;
+
+    [SerializeField]
+    GameObject NormalCrosshair;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (CurrentWeapon.PlayerInputAction("Fire1"))
         {
             CurrentWeapon.Attack();
+        }
+
+        if(CurrentWeapon.IsPossibleToAttack())
+        {
+
         }
     }
 }
