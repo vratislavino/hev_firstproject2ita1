@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,7 +11,9 @@ public class PlayerController : MonoBehaviour
     Vector3 cameraRotation;
 
     Rigidbody rb;
+    public Rigidbody Rb => rb;
     [SerializeField] private float speed;
+    private float speedEnvMult = 1;
     [SerializeField] private float jumpForce;
     [SerializeField] private float mouseSensitivity;
 
@@ -50,6 +53,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Sprint"))
             currentSpeed *= 1.5f;
 
+        currentSpeed *= speedEnvMult;
+
         rb.velocity = new Vector3(direction.x * currentSpeed, yMove, direction.z * currentSpeed);
 
 
@@ -65,5 +70,10 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(rotation);
         cameraHolder.localRotation = Quaternion.Euler(cameraRotation);
+    }
+
+    public void ChangeEnvironmentSpeedMultiplier(float newMult)
+    {
+        speedEnvMult = newMult;
     }
 }
