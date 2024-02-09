@@ -28,4 +28,6 @@ public abstract class Weapon : MonoBehaviour
     {
         return 1;
     }
+
+    public virtual void ResetReloadProgess() { }
 }

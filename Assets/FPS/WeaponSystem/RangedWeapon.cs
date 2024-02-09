@@ -51,6 +51,11 @@ public abstract class RangedWeapon : Weapon
         }
     }
 
+    public override void ResetReloadProgess()
+    {
+        currentReloadTime = ReloadTime;
+    }
+
     public override float GetReloadProgress()
     {
         return currentReloadTime / ReloadTime;
