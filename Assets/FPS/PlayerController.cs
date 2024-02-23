@@ -5,13 +5,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamagable
 {
     Vector3 rotation;
     Vector3 cameraRotation;
 
     Rigidbody rb;
     public Rigidbody Rb => rb;
+
+    public int Hp { get; set; }
+    private bool isHit = false;
+    private float hitInterval = 2;
+    private float hitCooldown;
+    [SerializeField]
+    private GameObject hitGraphics;
+
     [SerializeField] private float speed;
     private float speedEnvMult = 1;
     [SerializeField] private float jumpForce;
@@ -70,10 +78,40 @@ public class PlayerController : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(rotation);
         cameraHolder.localRotation = Quaternion.Euler(cameraRotation);
+    
+        if(isHit)
+        {
+            hitCooldown -= Time.deltaTime;
+            if(hitCooldown <= 0)
+            {
+                isHit = false;
+                hitGraphics.SetActive(false);
+            }
+        }
+    
+    
     }
 
     public void ChangeEnvironmentSpeedMultiplier(float newMult)
     {
         speedEnvMult = newMult;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        if(isHit)
+        {
+            Die();
+        } else
+        {
+            isHit = true;
+            hitCooldown = hitInterval;
+            hitGraphics.SetActive(true);
+        }
+    }
+
+    public void Die()
+    {
+        Time.timeScale = 0;
     }
 }
